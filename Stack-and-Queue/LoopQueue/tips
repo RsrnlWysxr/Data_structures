@@ -1,0 +1,15 @@
+循环数组浪费一个空间
+队列需要最多放置capacity个元素，则需要开辟realcapacity = capacity + 1 的空间
+
+循环数组中front和tail的更新：
+front = (front + 1) % realcapacity;
+tail = (tail + 1) % realcapacity;
+
+使用front和tail求size的方法：
+size = tail - front + realcapacity     --> 可以想做在真实开辟的空间后面，在开辟相同大的空间，tail此时应为tail + realcapacity
+但 由于 tail == front，size应为0，而不为realcapacity
+则取余
+size = (tail - front + realcapacity) % realcapacity;
+
+resize的空间大小：
+直接传递计算后的realcapacity的值，需要注意realcapacity与需求的capacity相差1的关系
