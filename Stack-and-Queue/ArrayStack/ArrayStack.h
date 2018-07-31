@@ -24,6 +24,11 @@ class Array
 			data = new T[capacity];
 			size = 0;
 		}
+	   	// 析构函数
+		~Array()
+ 		{
+        		delete[](data);
+    		}
 		// 获取数组的容量
 		int Getcapacity() const
 		{
