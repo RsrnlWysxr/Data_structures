@@ -1,3 +1,5 @@
+#include "ArrayStack.h"
+
 int main()
 {
 	ArrayStack<int>* stack = new ArrayStack<int>();
