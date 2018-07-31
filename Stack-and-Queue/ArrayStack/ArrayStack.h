@@ -196,16 +196,16 @@ class ArrayStack : public Stack<T>
 		}
 		void toString()
 		{
-			cout << "Stack:size" << getSize() << ".\n";
-			cout << "bottom -> ";
+			std::cout << "Stack:size：" << getSize() << ".\n";
+			std::cout << "bottom ";
 			for(int i = 0 ; i < getSize() ; ++i)
 			{
 				if(i == getSize() - 1)
 					{
-						cout << array->Getdata(i) << "-> top" << endl;
-						return;
+						std::cout << array->Getdata(i) << " top" << std::endl;
+						break;
 					}
-				cout << array->Getdata(i) << "->";
+				std::cout << array->Getdata(i) << "->";
 			}
 		}
 };
