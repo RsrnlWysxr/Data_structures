@@ -1,0 +1,74 @@
+
+    // 在链表中不是一个常用的操作，练习用：）
+// 在链表头添加新的元素e
+// 在链表末尾添加新的元素e
+// 获得链表的第index(0-based)个位置的元素
+    // 在链表中不是一个常用的操作，练习用：）
+// 获得链表的第一个元素
+// 获得链表的最后一个元素
+// 修改链表的第index(0-based)个位置的元素为e
+    // 在链表中不是一个常用的操作，练习用：）
+// 查找链表中是否有元素e
+// 从链表中删除index(0-based)位置的元素, 返回删除的元素
+    // 在链表中不是一个常用的操作，练习用：）
+// 从链表中删除第一个元素, 返回删除的元素
+// 从链表中删除最后一个元素, 返回删除的元素
+// 从链表中删除元素e
+
+typename < typename T >
+class LinkedList<T>
+{
+private:
+	Node* dummyHead;
+	int size;
+	class Node
+	{
+	public:
+		T e;
+		Node* next;
+		Node()
+		{
+			e = NULL;
+			next = NULL;
+		}
+		Node(T e)
+		{
+			this->e = e;
+			next = null;
+		}
+		Node(T e,Node* next)
+		{
+			this->e = e;
+			this->next = next;
+		}
+	};
+	
+public:
+	LinkedList()
+	{
+		dummyHead = new Node<T>();
+		size = 0;
+	}
+	
+	// 获取链表中的元素个数
+	int getSize()
+	{
+		return size;
+	}
+	// 返回链表是否为空
+	bool isEmpyt()
+	{
+		return (size == 0);
+	}
+	// 在链表的index(0-based)位置添加新的元素e
+	void add(int index,T e)
+	{
+		if(index > size || index < 0 )
+			throw "This index is Error.";
+		Node prev = dummyhead;
+		for(int i = 0 ; i < index ; ++i)
+		{
+			prev = prev->next;
+		}
+	}
+};
