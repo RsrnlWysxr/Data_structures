@@ -1,62 +1,35 @@
-
-    // 在链表中不是一个常用的操作，练习用：）
-// 在链表头添加新的元素e
-// 在链表末尾添加新的元素e
-// 获得链表的第index(0-based)个位置的元素
-    // 在链表中不是一个常用的操作，练习用：）
-// 获得链表的第一个元素
-// 获得链表的最后一个元素
-// 修改链表的第index(0-based)个位置的元素为e
-    // 在链表中不是一个常用的操作，练习用：）
-// 查找链表中是否有元素e
-// 从链表中删除index(0-based)位置的元素, 返回删除的元素
-    // 在链表中不是一个常用的操作，练习用：）
-// 从链表中删除第一个元素, 返回删除的元素
-// 从链表中删除最后一个元素, 返回删除的元素
-// 从链表中删除元素e
-
-typename < typename T >
-class LinkedList<T>
+#include <iostream>
+	
+template <typename T>
+class LinkedList
 {
 private:
-	Node* dummyHead;
-	int size;
 	class Node
 	{
 	public:
 		T e;
 		Node* next;
-		Node()
-		{
-			e = NULL;
-			next = NULL;
-		}
-		Node(T e)
-		{
-			this->e = e;
-			next = null;
-		}
-		Node(T e,Node* next)
-		{
-			this->e = e;
-			this->next = next;
-		}
+		Node():next(nullptr){}
+		Node(T e):e(e),next(nullptr){}
+		Node(T e,Node* next):e(e),next(next){}
 	};
+	Node* dummyHead;
+	int size;
 	
 public:
 	LinkedList()
 	{
-		dummyHead = new Node<T>();
+		dummyHead = new Node();
 		size = 0;
 	}
 	
 	// 获取链表中的元素个数
-	int getSize()
+	int getSize() const 
 	{
 		return size;
 	}
 	// 返回链表是否为空
-	bool isEmpyt()
+	bool isEmpyt() const 
 	{
 		return (size == 0);
 	}
@@ -65,10 +38,154 @@ public:
 	{
 		if(index > size || index < 0 )
 			throw "This index is Error.";
-		Node prev = dummyhead;
+		Node* prev = dummyHead;
 		for(int i = 0 ; i < index ; ++i)
 		{
 			prev = prev->next;
 		}
+		prev->next = new Node(e,prev->next);
+		++size;
+	}
+	// 在链表头添加新的元素e
+	void addFirst(T e)
+	{
+		add(0,e);
+	}
+	// 在链表末尾添加新的元素e
+	void addLast(T e)
+	{
+		add(size,e);
+	}
+	// 获得链表的第index(0-based)个位置的元素
+    T getData(int index) const 
+	{
+		if(index >= size || index < 0 )
+			throw "This index is Error.";
+		Node* cur = dummyHead->next;
+		for(int i = 0 ; i < index ; ++i)
+		{
+			cur = cur->next;
+		}
+		return cur->e;
+	}
+	// 获得链表的第一个元素
+	T getFirst() const
+	{
+		return getData(0);
+	}
+	// 获得链表的最后一个元素
+	T getLast() const
+	{
+		return getData(size - 1);
+	}
+	// 修改链表的第index(0-based)个位置的元素为e
+	void set(int index,T e)
+	{
+		if(index >= size || index < 0 )
+			throw "This index is Error.";
+		Node* cur = dummyHead->next;
+		for(int i = 0 ; i < index ; ++i)
+		{
+			cur = cur->next;
+		}
+		cur->e = e;
+	}
+	// 查找链表中是否有元素e
+	bool contains(T e)
+	{
+		Node* cur = dummyHead->next;
+		while(cur != nullptr)
+		{
+			if(cur->e == e)
+				return true;
+			cur = cur->next;
+		}
+		return false;
+	}
+	// 从链表中删除index(0-based)位置的元素, 返回删除的元素
+    T remove(int index)
+	{
+		if(index >= size || index < 0 )
+			throw "This index is Error.";
+		Node* prev = dummyHead;
+		for(int i = 0 ; i < index ; ++i)
+		{
+			prev = prev->next;
+		}
+		Node* retNode = prev->next;
+		prev->next = retNode->next;
+		retNode->next = nullptr;
+		-- size;
+		return retNode->e;
+	}
+	// 从链表中删除第一个元素, 返回删除的元素
+	T removeFirst()
+	{
+		return remove(0);
+	}
+	// 从链表中删除最后一个元素, 返回删除的元素
+	T removeLast()
+	{
+		return remove(size - 1);
+	}
+	// 从链表中删除元素e
+	void removeElement(T e)
+	{
+		Node* prev = dummyHead;
+		while(prev->next != nullptr)
+		{
+			if(prev->next->e == e)
+				break;
+			prev = prev->next;
+		}
+		if(prev->next != nullptr)
+		{
+			Node* delNode = prev->next;
+			prev->next = delNode->next;
+			delNode->next = nullptr;
+			-- size;
+		}
+	}
+	//打印链表
+	void toString()
+	{
+		std::cout << "dummyHead->";
+		Node* cur = dummyHead->next;
+		while(cur != nullptr)
+		{
+			std::cout << cur->e << "->";
+			cur = cur->next;
+		}
+		std::cout << "Null" << std::endl;
 	}
 };
+
+int main()
+{
+	auto link = new LinkedList<int>;
+	for(int i = 0 ; i < 10 ; ++i)
+	{
+		link->addFirst(i);
+	}
+	std::cout << link->getSize() << std::endl;
+	link->toString();
+	link->add(1,111);
+	link->addLast(999);
+	link->toString();
+	std::cout << link->getData(1) << std::endl;
+	std::cout << link->getFirst() << std::endl;
+	std::cout << link->getLast() << std::endl;
+	link->set(1,666);
+	link->toString();
+	std::cout << link->contains(777) << std::endl;
+	link->remove(0);
+	std::cout << link->getSize() << std::endl;
+	link->toString();
+	link->removeFirst();
+	link->toString();
+	link->removeLast();
+	link->toString();
+	link->removeElement(5);
+	link->toString();
+	std::cout << link->getSize() << std::endl;
+}
