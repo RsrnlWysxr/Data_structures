@@ -12,6 +12,7 @@ private:
 		Node():next(nullptr){}
 		Node(T e):e(e),next(nullptr){}
 		Node(T e,Node* next):e(e),next(next){}
+		~Node(){next = nullptr;}
 	};
 	Node* dummyHead;
 	int size;
@@ -22,7 +23,10 @@ public:
 		dummyHead = new Node();
 		size = 0;
 	}
-	
+	~LinkedList()
+	{
+		delete dummyHead;
+	}
 	// 获取链表中的元素个数
 	int getSize() const 
 	{
