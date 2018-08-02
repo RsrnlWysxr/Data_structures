@@ -1,5 +1,9 @@
 #include <iostream>
-	
+//改isEmpty
+//改Node为外部类
+//改toString
+
+
 template <typename T>
 class LinkedList
 {
