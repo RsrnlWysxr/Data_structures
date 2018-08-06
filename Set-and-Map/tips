@@ -1,0 +1,33 @@
+Set	特点：
+不能盛放重复的元素
+底层树	
+底层链表
+多重集合：
+能盛放重复的元素
+接口：
+Set<E>
+void add(E)   
+void remove(E)
+bool contains(E)
+int getsize()
+bool isempty()
+应用：
+客户统计
+词汇量统计
+
+
+
+Map	特点：
+key  --> 	value
+存储（键，值）数据对的数据结构
+根据键，寻找值
+使用树或链表，增加一个变量即可
+接口：
+Map<K,V>
+void add(K,V)
+V remove(K)
+bool contains(K)
+V get(K)
+void set(K,V)
+int getsize()
+bool isempty()
