@@ -36,7 +36,7 @@ public:
 private:
     void destroy(Node* node)
     {
-        if(!node)
+        if(node)
         {
             destroy(node->left);
             destroy(node->right);
@@ -412,6 +412,7 @@ private:
             {
                 Node* ret = node->left;
                 size --;
+                delete node;
                 return ret;
             }
             // 待删除节点左右子树均不为空的情况
