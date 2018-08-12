@@ -33,7 +33,7 @@ public:
     }
     ~MaxHeap()
     {
-        delete data;
+        delete[] data;
     }
     // 返回堆中的元素个数
     int getSize() const
