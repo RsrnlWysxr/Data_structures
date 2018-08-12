@@ -1,0 +1,12 @@
+IndexMaxHeap内部由三个数组搭建
+
+data数组 --> 最大索引堆中的数据    根据i访问具体数据
+index数组 --> 最大索引堆中的索引    index[j] = i        // 也是真正的堆
+reverse --> 最大索引堆中的反向索引  reverse[i] = j
+
+默认i为真实数组的索引，j为index的索引，即j为真实顺序
+
+根据语意，始终保持如下：
+ndex[reverse[i]] = i;
+reverse[index[j]] = j;
+
