@@ -29,10 +29,12 @@ private:
     if( node->next == nullptr)
         {
             delete node;
+            size--;
             return;
         }
     destroy(node->next);
     delete node;
+    size--;
     return;
     }
 
