@@ -123,7 +123,7 @@ public:
         }
         Node* retNode = prev->next;
         prev->next = retNode->next;
-        retNode->next = nullptr;
+        detele retNode;
         -- size;
         return retNode->e;
     }
@@ -151,7 +151,7 @@ public:
         {
             Node* delNode = prev->next;
             prev->next = delNode->next;
-            delNode->next = nullptr;
+            delete delNode;
             -- size;
         }
     }
