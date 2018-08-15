@@ -21,6 +21,20 @@ private:
     };
     Node* dummyHead;
     int size;
+    
+    // 删除以node为根的链表
+    
+    void destroy(Node* node)
+    {
+    if( node->next == nullptr)
+        {
+            delete node;
+            return;
+        }
+    destroy(node->next);
+    delete node;
+    return;
+    }
 
 public:
     LinkedList()
@@ -30,7 +44,7 @@ public:
     }
     ~LinkedList()
     {
-        delete dummyHead;
+        destroy(dummyHead);
     }
     // 获取链表中的元素个数
     int getSize() const
