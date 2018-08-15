@@ -322,7 +322,7 @@ private:
         return node;
     }
 public:
-    // 从二分搜索树中删除最小值所在节点, 返回最小值
+    // 从二分搜索树中删除最大值所在节点, 返回最大值
     T removeMax()
     {
         T ret = maximum();
