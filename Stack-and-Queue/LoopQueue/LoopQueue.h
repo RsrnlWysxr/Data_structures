@@ -77,7 +77,7 @@ public:
         T ret = getFront();
         data[front] = 0;
         front = (front + 1) % realcapacity;
-        if(getSize() <= (realcapacity - 1) / 4 && getSize() / 2 != 0)
+        if(getSize() <= (realcapacity - 1) / 4 && (realcapacity + 1) / 2 != 0)
             resize((realcapacity + 1) / 2);
         return ret;
     }
