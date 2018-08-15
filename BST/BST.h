@@ -27,10 +27,6 @@ private:
     int size;
 public:
     BST():root(nullptr),size(0){}
-    int getSize()
-    {
-        return size;
-    }
     ~BST()
     {
         destroy(root);
@@ -49,6 +45,10 @@ private:
     }
 
 public:
+    int getSize()
+    {
+        return size;
+    }
     bool isEmpty()
     {
         return (size == 0);
